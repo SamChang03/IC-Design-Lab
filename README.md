@@ -8,7 +8,7 @@ Homework and term project for **EE4292 IC Design Laboratory** (積體電路設�
 | [`HW2-Enigma`](HW2-Enigma) | **Enigma cipher machine** in hardware | Built up in four parts: rotor A and reflector, a switchable box, a plugboard, and a second rotor B. Each part comes with its own testbench and behavioral model |
 | [`HW3-Pipelining`](HW3-Pipelining) | Pipelining and PPA trade-offs | Pipelined versions of ROP3 (LUT-256 vs. smart formula) and of the Enigma machine. The `performance_*.txt` files record the area, power, and timing comparison |
 | [`HW4-QR-Code-Decoder`](HW4-QR-Code-Decoder) | **QR code decoder** that reads an image from SRAM | Locates the QR code (`find_qrcode`), removes the mask (`de_mask`), and decodes the data (`decode`) under a control FSM. Passed all pattern ranks (A–D). PI = A·T·C² = 8.49 × 10¹⁴ |
-| [`Final-ECDSA`](Final-ECDSA) | **ECDSA signature engine on secp256k1** (term project, two-person team) | I designed all of the elliptic-curve arithmetic: Montgomery-ladder scalar multiplication, point add/double, and modular add/sub/mul/inverse. My teammate built SHA-256, signing, and the top level. AXI-Stream interface, taken through place-and-route. See [its README](Final-ECDSA/README.md) |
+| [`Final-ECDSA`](Final-ECDSA) | **ECDSA signature engine on secp256k1** (term project, two-person team) | I designed all of the elliptic-curve arithmetic: Montgomery-ladder scalar multiplication, point add/double, and modular add/sub/mul/inverse. I also did the APR (place-and-route). My teammate built SHA-256, signing, and the top level. AXI-Stream interface. See [its README](Final-ECDSA/README.md) |
 
 ### Selected results
 

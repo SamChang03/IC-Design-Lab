@@ -2,7 +2,7 @@
 
 Term project for EE4292 IC Design Laboratory (Fall 2024), by a two-person team:
 
-- **Yu-Shuo Chang (張育碩)**: elliptic-curve arithmetic
+- **Yu-Shuo Chang (張育碩)**: elliptic-curve arithmetic and APR (place-and-route)
 - **黃玄彰**: SHA-256, signing, and top-level integration
 
 The engine takes a message and a private key and produces an **ECDSA signature on curve secp256k1** (the Bitcoin curve). The interface is AXI-Stream, and the design was taken from RTL through synthesis, LEC, and place-and-route.
@@ -25,6 +25,7 @@ nonce k ──► ECC scalar mult (k·G) ─► r ┘
 | Carry-save (CSA) versions of the modular operators, for timing | `CSA_mod_add.v`, `CSA_mod_sub.v`, `CSA_mod_mul.v`, `CSA_mod_inv.v` | 黃玄彰 |
 | SHA-256 hashing (and an earlier SHA-1) | `sha256_*.v`, `sha1_*.v` | 黃玄彰 |
 | Signing and top level | `signing.v`, `ECDSA_top.v`, `ECDSA_wrapper.v`, `post_ML.v` | 黃玄彰 |
+| **APR** (place-and-route, layout below) | — | Chang |
 
 The Montgomery-ladder scalar multiplication does a point addition and a point doubling on every key bit, whatever the bit's value. Its timing therefore does not depend on the private key, which resists timing and simple power analysis.
 
