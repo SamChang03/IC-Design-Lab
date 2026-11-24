@@ -1,6 +1,11 @@
 # IC Design Laboratory (EE4292)
 
-Homework and term project for **EE4292 IC Design Laboratory** (積體電路設計實驗) at National Tsing Hua University, Fall 2024. Each homework is a Verilog design that is simulated, linted (SpyGlass), and synthesized (Design Compiler). Designs are ranked by a performance index (PI) built from area, cycle time, and cycle count.
+My homework and term project for **EE4292 IC Design Laboratory** (積體電路設計實驗) at National Tsing Hua University (Fall 2024). Each homework is a Verilog design that is simulated, linted (SpyGlass), and synthesized (Design Compiler). Designs are ranked by a performance index (PI) built from area, cycle time, and cycle count.
+
+- **Author:** Yu-Shuo Chang (張育碩)
+- **Term project partner:** 黃玄彰
+
+## Projects at a glance
 
 | Folder | Design | Highlights |
 |---|---|---|
@@ -34,7 +39,3 @@ The power column uses the units of the Design Compiler report.
 - SpyGlass (lint)
 - Synopsys Design Compiler
 - Place-and-route (APR)
-
-## Author
-
-Yu-Shuo Chang (張育碩), Department of Electrical Engineering, NTHU
