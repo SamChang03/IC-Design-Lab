@@ -1,0 +1,20 @@
+        lut_256     smart
+Area     6339        3621
+power    0.47        0.40
+Time      1.8        1.7
+
+1. The area of the smart is much smaller than the lut_256, 
+    from the report we can observe that the noncombinational part of both
+    (lut256,smart) = (900,796)
+    method is not the critical effect to the result.
+    That is to say, the combinational part of the 256-1 MUX occupy a lot of area
+    than the simple formula in smart ones.
+
+2. As for the power, the smart cost less power. I think the reason is that if theere
+    is more bits oberation, simply more operations, will lead the MOS in gate keeping on
+    and off, which laeding the switching power become larger.
+
+3. Finally, the Timeing of the smart is also larger than the lut_256. However, the comparison
+    between theses two is small. I think the reason is that the critical paths in both mathod
+    are short. That is, we cannot do much optimization on that since the critical path is short 
+    with these two method

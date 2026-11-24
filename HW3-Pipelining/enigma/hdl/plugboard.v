@@ -1,0 +1,182 @@
+module plugboard 
+(
+	input clk,         // clock 
+	//input srst_n,      // synchronous reset (active low)
+	input load,        // load control signal (level sensitive). 0/1: inactive/active
+	input encrypt,     // encrypt control signal (level sensitive). 0/1: inactive/active
+	//input crypt_mode,  // 0: encrypt; 1:decrypt;
+	input [6-1:0] forward_in,
+	input [6-1:0] inverse_in,
+
+	output reg [6-1:0] forward_out,
+	output reg [6-1:0] inverse_out
+);
+
+localparam  configuration_num  =7'd16;
+
+/////******** Combinational ********/////
+reg [6-1:0] configuration_A [0:15];
+reg [6-1:0] configuration_B [0:15];
+reg [6-1:0] configuration_A_next [0:15];
+reg [6-1:0] configuration_B_next [0:15];
+
+reg [3:0] load_cnt_A,load_cnt_next_A;
+reg [3:0] load_cnt_B,load_cnt_next_B;
+reg loadAB_change,loadAB_change_next;
+
+
+always @(*) begin
+	//Initial
+	load_cnt_next_A = 4'd0;
+	load_cnt_next_B = 4'd0;
+	loadAB_change_next =1'b0;
+	forward_out = forward_in;
+	inverse_out = inverse_in;
+
+	//I/O configuration
+	if(load)begin
+		loadAB_change_next = ~ loadAB_change;
+		if (loadAB_change) begin
+			load_cnt_next_A = load_cnt_A + 1'b1;
+			load_cnt_next_B = load_cnt_B;
+		end
+		else begin
+			load_cnt_next_A = load_cnt_A;
+			load_cnt_next_B = load_cnt_B + 1'b1;
+		end
+	end
+	if (encrypt) begin
+		case (forward_in) // synopsys parallel_case
+
+			configuration_A[0]: forward_out = configuration_B[0];
+			configuration_B[0]: forward_out = configuration_A[0];
+
+			configuration_A[1]: forward_out = configuration_B[1];
+			configuration_B[1]: forward_out = configuration_A[1];
+
+			configuration_A[2]: forward_out = configuration_B[2];
+			configuration_B[2]: forward_out = configuration_A[2];
+
+			configuration_A[3]: forward_out = configuration_B[3];
+			configuration_B[3]: forward_out = configuration_A[3];
+
+			configuration_A[4]: forward_out = configuration_B[4];
+			configuration_B[4]: forward_out = configuration_A[4];
+
+			configuration_A[5]: forward_out = configuration_B[5];
+			configuration_B[5]: forward_out = configuration_A[5];
+
+			configuration_A[6]: forward_out = configuration_B[6];
+			configuration_B[6]: forward_out = configuration_A[6];
+
+			configuration_A[7]: forward_out = configuration_B[7];
+			configuration_B[7]: forward_out = configuration_A[7];
+
+			configuration_A[8]: forward_out = configuration_B[8];
+			configuration_B[8]: forward_out = configuration_A[8];
+
+			configuration_A[9]: forward_out = configuration_B[9];
+			configuration_B[9]: forward_out = configuration_A[9];
+
+			configuration_A[10]: forward_out = configuration_B[10];
+			configuration_B[10]: forward_out = configuration_A[10];
+
+			configuration_A[11]: forward_out = configuration_B[11];
+			configuration_B[11]: forward_out = configuration_A[11];
+
+			configuration_A[12]: forward_out = configuration_B[12];
+			configuration_B[12]: forward_out = configuration_A[12];
+
+			configuration_A[13]: forward_out = configuration_B[13];
+			configuration_B[13]: forward_out = configuration_A[13];
+
+			configuration_A[14]: forward_out = configuration_B[14];
+			configuration_B[14]: forward_out = configuration_A[14];
+
+			configuration_A[15]: forward_out = configuration_B[15];
+			configuration_B[15]: forward_out = configuration_A[15];
+				
+		endcase
+		case (inverse_in) // synopsys parallel_case
+			configuration_A[0]: inverse_out = configuration_B[0];
+			configuration_B[0]: inverse_out = configuration_A[0];
+
+			configuration_A[1]: inverse_out = configuration_B[1];
+			configuration_B[1]: inverse_out = configuration_A[1];
+
+			configuration_A[2]: inverse_out = configuration_B[2];
+			configuration_B[2]: inverse_out = configuration_A[2];
+
+			configuration_A[3]: inverse_out = configuration_B[3];
+			configuration_B[3]: inverse_out = configuration_A[3];
+
+			configuration_A[4]: inverse_out = configuration_B[4];
+			configuration_B[4]: inverse_out = configuration_A[4];
+
+			configuration_A[5]: inverse_out = configuration_B[5];
+			configuration_B[5]: inverse_out = configuration_A[5];
+
+			configuration_A[6]: inverse_out = configuration_B[6];
+			configuration_B[6]: inverse_out = configuration_A[6];
+
+			configuration_A[7]: inverse_out = configuration_B[7];
+			configuration_B[7]: inverse_out = configuration_A[7];
+
+			configuration_A[8]: inverse_out = configuration_B[8];
+			configuration_B[8]: inverse_out = configuration_A[8];
+
+			configuration_A[9]: inverse_out = configuration_B[9];
+			configuration_B[9]: inverse_out = configuration_A[9];
+
+			configuration_A[10]: inverse_out = configuration_B[10];
+			configuration_B[10]: inverse_out = configuration_A[10];
+
+			configuration_A[11]: inverse_out = configuration_B[11];
+			configuration_B[11]: inverse_out = configuration_A[11];
+
+			configuration_A[12]: inverse_out = configuration_B[12];
+			configuration_B[12]: inverse_out = configuration_A[12];
+
+			configuration_A[13]: inverse_out = configuration_B[13];
+			configuration_B[13]: inverse_out = configuration_A[13];
+
+			configuration_A[14]: inverse_out = configuration_B[14];
+			configuration_B[14]: inverse_out = configuration_A[14];
+
+			configuration_A[15]: inverse_out = configuration_B[15];
+			configuration_B[15]: inverse_out = configuration_A[15];
+		endcase
+	end
+	
+end
+
+integer i;
+//configuration determination
+always @(*) begin
+	//Default case
+	for ( i=0 ;i<configuration_num;i=i+1 ) begin
+		configuration_A_next[i] = configuration_A[i];
+		configuration_B_next[i] = configuration_B[i];
+	end
+	
+	if(load & loadAB_change)begin
+		configuration_A_next[load_cnt_A] = forward_in;
+	end
+	else if (load & ~loadAB_change) begin
+		configuration_B_next[load_cnt_B] = forward_in;
+	end
+end
+
+/////******** Sequential ********/////
+integer j;
+always @(posedge clk) begin
+	load_cnt_A <= load_cnt_next_A;
+	load_cnt_B <= load_cnt_next_B;
+	loadAB_change <= loadAB_change_next;
+	for ( j=0 ;j<configuration_num;j=j+1 ) begin
+		configuration_A[j] <= configuration_A_next[j];
+		configuration_B[j] <= configuration_B_next[j];
+	end	
+end
+	
+endmodule
