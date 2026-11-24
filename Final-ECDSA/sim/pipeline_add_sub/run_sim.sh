@@ -1,0 +1,1 @@
+vcs -R +v2k -full64 -f sim.f -debug_access+all -l vcs_mod_add.log

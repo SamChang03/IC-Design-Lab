@@ -1,0 +1,1 @@
+sg_shell < sha256_top.tcl

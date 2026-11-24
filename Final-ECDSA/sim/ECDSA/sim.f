@@ -1,0 +1,14 @@
+./tb_ECDSA.v
+../../hdl/ECDSA_top.v
+../../hdl/sha256_top.v
+../../hdl/sha256_padding.v
+../../hdl/sha256_extending.v
+../../hdl/sha256_compress.v
+../../hdl/ECC_top.v
+../../hdl/ECPA.v
+../../hdl/ECPD.v
+../../hdl/signing.v
+../../hdl/CSA_mod_inv.v
+../../hdl/CSA_mod_add.v
+../../hdl/CSA_mod_mul.v
+../../hdl/CSA_mod_sub.v

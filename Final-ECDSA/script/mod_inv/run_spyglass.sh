@@ -1,0 +1,1 @@
+sg_shell < mod_inv.tcl

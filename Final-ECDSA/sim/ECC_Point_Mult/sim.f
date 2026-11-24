@@ -1,0 +1,9 @@
+./tb_ecc_scalar_mult.v
+../../hdl/ECC_top.v
+../../hdl/karatsuba_multiply.v
+../../hdl/mod_inv.v
+../../hdl/mod_mul.v
+../../hdl/mod_add.v
+../../hdl/mod_sub.v
+../../hdl/ECPA.v
+../../hdl/ECPD.v

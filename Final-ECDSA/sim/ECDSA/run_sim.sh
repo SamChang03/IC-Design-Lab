@@ -1,0 +1,1 @@
+vcs -R +v2k -fgp -full64 -f sim.f -debug_access+all -l vcs_ECDSA_test.log -j10

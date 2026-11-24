@@ -1,0 +1,4 @@
+../hdl/sha256_top.v
+../hdl/sha256_padding.v
+../hdl/sha256_extending.v
+../hdl/sha256_compress.v

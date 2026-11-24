@@ -8,7 +8,7 @@ Homework and term project for **EE4292 IC Design Laboratory** (積體電路設�
 | [`HW2-Enigma`](HW2-Enigma) | **Enigma cipher machine** in hardware | Built up in four parts: rotor A and reflector, a switchable box, a plugboard, and a second rotor B. Each part comes with its own testbench and behavioral model |
 | [`HW3-Pipelining`](HW3-Pipelining) | Pipelining and PPA trade-offs | Pipelined versions of ROP3 (LUT-256 vs. smart formula) and of the Enigma machine. The `performance_*.txt` files record the area, power, and timing comparison |
 | [`HW4-QR-Code-Decoder`](HW4-QR-Code-Decoder) | **QR code decoder** that reads an image from SRAM | Locates the QR code (`find_qrcode`), removes the mask (`de_mask`), and decodes the data (`decode`) under a control FSM. Passed all pattern ranks (A–D). PI = A·T·C² = 8.49 × 10¹⁴ |
-| [`Final-ECDSA`](Final-ECDSA) | **ECDSA signature engine on secp256k1** (term project, two-person team) | SHA-256, elliptic-curve scalar multiplication, and signing, over an AXI-Stream interface, with side-channel resistance. Taken through place-and-route (`ECDSA_layout*.png`); see `report.pdf` |
+| [`Final-ECDSA`](Final-ECDSA) | **ECDSA signature engine on secp256k1** (term project, two-person team) | I designed all of the elliptic-curve arithmetic: Montgomery-ladder scalar multiplication, point add/double, and modular add/sub/mul/inverse. My teammate built SHA-256, signing, and the top level. AXI-Stream interface, taken through place-and-route. See [its README](Final-ECDSA/README.md) |
 
 ### Selected results
 
@@ -23,7 +23,7 @@ The power column uses the units of the Design Compiler report.
 
 ## Notes
 
-- The ECDSA RTL is kept in my teammate's repository. This repo holds the report and layout.
+- The ECDSA project is published here with my teammate's agreement. The authors of each block are listed in [Final-ECDSA/README.md](Final-ECDSA/README.md).
 - Gate-level netlists, SDF files, synthesis reports, homework specs, lecture slides, and course-provided SRAM models and patterns are not included.
 - HW5 (a CNN accelerator) is not included.
 
