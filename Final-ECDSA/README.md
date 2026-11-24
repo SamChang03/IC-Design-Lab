@@ -7,7 +7,10 @@ Term project for EE4292 IC Design Laboratory (Fall 2024), by a two-person team:
 
 The engine takes a message and a private key and produces an **ECDSA signature on curve secp256k1** (the Bitcoin curve). The interface is AXI-Stream, and the design was taken from RTL through synthesis, LEC, and place-and-route.
 
-![layout](ECDSA_layout.png)
+<p align="center">
+  <img src="ECDSA_layout.png" width="360" alt="ECDSA layout"><br>
+  <em>ECDSA engine after APR</em>
+</p>
 
 ## Architecture
 
