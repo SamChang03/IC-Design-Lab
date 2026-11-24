@@ -2,6 +2,7 @@
 
 My homework and term project for **EE4292 IC Design Laboratory** (積體電路設計實驗) at National Tsing Hua University (Fall 2024). Each homework is a Verilog design that is simulated, linted (SpyGlass), and synthesized (Design Compiler). Designs are ranked by a performance index (PI) built from area, cycle time, and cycle count.
 
+- **Instructor:** Prof. Chao-Tsung Huang (黃朝宗)
 - **Author:** Yu-Shuo Chang (張育碩)
 - **Term project partner:** 黃玄彰
 
